@@ -12,6 +12,7 @@
 		$header = $('#header'),
 		$footer = $('#footer'),
 		$main = $('#main'),
+    $main_nav = $main.children('nav'),
 		$main_articles = $main.children('article');
 
 	// Breakpoints.
@@ -98,9 +99,11 @@
 
 							// Show main, article.
 								$main.show();
+                $main_nav.show();
 								$article.show();
 
 							// Activate article.
+                $main_nav.addClass('active');
 								$article.addClass('active');
 
 							// Unlock.
@@ -172,12 +175,14 @@
 
 								// Show main, article.
 									$main.show();
+                  $main_nav.show();
 									$article.show();
 
 								// Activate article.
 									setTimeout(function() {
 
-										$article.addClass('active');
+                    $main_nav.addClass('active');
+                    $article.addClass('active');
 
 										// Window stuff.
 											$window
@@ -219,9 +224,11 @@
 								$body.addClass('is-switching');
 
 							// Deactivate article.
+                $main_nav.removeClass('active');
 								$article.removeClass('active');
 
 							// Hide article, main.
+                $main_nav.hide();
 								$article.hide();
 								$main.hide();
 
@@ -251,6 +258,7 @@
 						locked = true;
 
 				// Deactivate article.
+          $main_nav.removeClass('active');
 					$article.removeClass('active');
 
 				// Hide article.
@@ -305,14 +313,14 @@
 
 			});
 
-		// Events.
+		/* Events.
 			$body.on('click', function(event) {
 
 				// Article visible? Hide.
 					if ($body.hasClass('is-article-visible'))
 						$main._hide(true);
 
-			});
+			});*/
 
 			$window.on('keyup', function(event) {
 
@@ -389,6 +397,7 @@
 
 			// Hide main, articles.
 				$main.hide();
+                $main_nav.hide();
 				$main_articles.hide();
 
 			// Initial article.
